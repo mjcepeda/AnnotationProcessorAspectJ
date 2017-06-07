@@ -2,6 +2,9 @@
 # AnnotationProcessorAspectJ
 Hello world project using AspectJ and annotation processor.
 
+For this example, I followed the next tutorial:
+http://andrewclement.blogspot.de/2014/08/annotation-processing-in-ajdt.html
+
 Similar to annotation-processor-sample project. In this case we create an aspect file using annotation processor for every method annotated with @StreamsFactory.
 
 This project only contains the main class, the interface class @StreamsFactory, and the processor StreamProcessor, are in processor.jar in the lib folder. 
