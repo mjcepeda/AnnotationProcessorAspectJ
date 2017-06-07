@@ -2,11 +2,11 @@
 # AnnotationProcessorAspectJ
 Hello world project using AspectJ and annotation processor.
 
-Similar to annotation-processor project. In this case we create an aspect file using annotation processor for every method annotated with @StreamsFactory.
+Similar to annotation-processor-sample project. In this case we create an aspect file using annotation processor for every method annotated with @StreamsFactory.
 
 This project only contains the main class, the interface class @StreamsFactory, and the processor StreamProcessor, are in processor.jar in the lib folder. 
 
-For this example, @StreamsFactory is identical to the interface in annotation-processor project, but the target is ElementType.METHOD instead of ElementType.TYPE.
+For this example, @StreamsFactory is identical to the interface in annotation-processor-sample project, but the target is ElementType.METHOD instead of ElementType.TYPE.
 
 The class StreamProcessor is also similar to that one in annotation-processor, but in this case, the process method creates an aspect file for every method annotated with @StreamsFactory. That aspect has an before advice for that method that injects just a simple message.
 
