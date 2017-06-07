@@ -14,25 +14,25 @@ The class StreamProcessor is also similar to that one in annotation-processor, b
 
 This is the code snipped:
 
-for (Element annotatedElement : roundEnv.getElementsAnnotatedWith(StreamsFactory.class)) {
-	// Check if a method has been annotated with @StreamsFactory
-	if (annotatedElement.getKind() != ElementKind.METHOD) {
-		error(annotatedElement, "Only methods can be annotated with @%s", StreamsFactory.class.getSimpleName());
-		return true; // Exit processing
-	}
+	for (Element annotatedElement : roundEnv.getElementsAnnotatedWith(StreamsFactory.class)) {
+		// Check if a method has been annotated with @StreamsFactory
+		if (annotatedElement.getKind() != ElementKind.METHOD) {
+			error(annotatedElement, "Only methods can be annotated with @%s", StreamsFactory.class.getSimpleName());
+			return true; // Exit processing
+		}
 
-	// For any methods we find, create an aspect:
-	String methodName = annotatedElement.getSimpleName().toString();
-	String aspectText = 
-	"public aspect Advise_"+methodName+" {\n"+
-	          "  before(): execution(* "+methodName+"(..)) {\n"+
-	          "    System.out.println(\""+methodName+" running\");\n"+
-	          "  }\n"+
-	          "}\n";
-	try {
-	      JavaFileObject file = filer.createSourceFile("Advise_"+methodName, annotatedElement);
-	      file.openWriter().append(aspectText).close();
-	      System.out.println("Generated aspect to advise "+methodName);
-	} catch (IOException ioe) { }
-}
+		// For any methods we find, create an aspect:
+		String methodName = annotatedElement.getSimpleName().toString();
+		String aspectText = 
+		"public aspect Advise_"+methodName+" {\n"+
+			  "  before(): execution(* "+methodName+"(..)) {\n"+
+			  "    System.out.println(\""+methodName+" running\");\n"+
+			  "  }\n"+
+			  "}\n";
+		try {
+		      JavaFileObject file = filer.createSourceFile("Advise_"+methodName, annotatedElement);
+		      file.openWriter().append(aspectText).close();
+		      System.out.println("Generated aspect to advise "+methodName);
+		} catch (IOException ioe) { }
+	}
 
