@@ -12,7 +12,7 @@ For this example, @StreamsFactory is identical to the interface in annotation-pr
 
 The class StreamProcessor is also similar to that one in annotation-processor, but in this case, the process method creates an aspect file for every method annotated with @StreamsFactory. That aspect has an before advice for that method that injects just a simple message.
 
-This is the code snipped:
+This is the code snippet:
 
 	for (Element annotatedElement : roundEnv.getElementsAnnotatedWith(StreamsFactory.class)) {
 		// Check if a method has been annotated with @StreamsFactory
